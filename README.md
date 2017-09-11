@@ -7,8 +7,11 @@
 09-11 03:18:32.761 4386-4386/? D/AndroidUtils: MainActivity: ┌────────────────────────────
 
 09-11 03:18:32.761 4386-4386/? D/AndroidUtils: MainActivity: │ main, dLogDemo(MainActivity.java:20)
+
 09-11 03:18:32.761 4386-4386/? D/AndroidUtils: MainActivity: ├─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
+
 09-11 03:18:32.761 4386-4386/? D/AndroidUtils: MainActivity: │ debug
+
 09-11 03:18:32.761 4386-4386/? D/AndroidUtils: MainActivity: └─────────────────────────────
 
 
