@@ -13,8 +13,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-
-        //初始化log
+        //初始化log, 如果不初始化, 将使用 DLog 的默认样式  (无头, 无框)
         DLogUtils.initDLog(this);
     }
 }

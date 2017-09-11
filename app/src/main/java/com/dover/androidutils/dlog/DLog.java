@@ -62,7 +62,7 @@ public class DLog {
     private static final int XML = 0x30;
 
 
-    private static String sGlobalTag = null;    // 全局log标签
+    private static String sGlobalTag = "dlog : ";    // 全局log标签
 
     private static boolean sLogOpen = true;           // log总开关，默认开
     private static boolean sLog2ConsoleOpen = true;   // logcat是否打印，默认打印
@@ -73,8 +73,8 @@ public class DLog {
 
     private static int sStackDeep = 1;          // log栈深度
 
-    //private static boolean sLogHeadOpen = true;   // log头部开关，默认开
-    private static boolean sLogBorderOpen = true;  // log边框开关，默认开
+    private static boolean sLogHeadOpen = false;   // log头部开关，默认关, (正常样式)
+    private static boolean sLogBorderOpen = false;  // log边框开关，默认关, (正常样式)
 
 
     private static final String NULL_TIPS = "Log with null object.";
@@ -253,10 +253,10 @@ public class DLog {
         StackTraceElement targetElement = stackTrace[3];    //TODO why
         String fileName = targetElement.getFileName();
         String className = fileName.substring(0, fileName.indexOf('.'));
-        tag = TextUtils.isEmpty(tag) ? className : tag;     //为空就是类名
-//        if (!sLogHeadOpen) {     //头信息关闭
-//            return new TagHead(tag, null, ": ");
-//        }
+        tag = TextUtils.isEmpty(tag) ? className : tag;     //tag为空就是类名
+        if (!sLogHeadOpen) {     //头信息关闭
+            return new TagHead(tag, null, ": ");
+        }
         String threadName = Thread.currentThread().getName();
         final String head = new Formatter()
                 .format("%s, %s(%s:%d)",
@@ -543,6 +543,12 @@ public class DLog {
             return this;
         }
 
+        // 设置log头部信息开关
+        public LogConfig setLogHeadOpen(final boolean logHeadOpen) {
+            sLogHeadOpen = logHeadOpen;
+            return this;
+        }
+
         // 设置log边框开关
         public LogConfig setBorderOpen(final boolean borderOpen) {
             sLogBorderOpen = borderOpen;
@@ -574,6 +580,7 @@ public class DLog {
                     + LINE_SEP + "isLogOpen:        " + sLogOpen
                     + LINE_SEP + "isConsoleOpen:    " + sLog2ConsoleOpen
                     + LINE_SEP + "isFileOpen:       " + sLog2FileOpen
+                    + LINE_SEP + "isHeadOpen:       " + sLogHeadOpen
                     + LINE_SEP + "sGlobalTag:       " + (TextUtils.isEmpty(sGlobalTag) ? "null" : sGlobalTag)
                     + LINE_SEP + "isBorderOpen:     " + sLogBorderOpen
                     + LINE_SEP + "dir:              " + (sDir == null ? sDefaultDir : sDir)
