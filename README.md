@@ -14,6 +14,8 @@
 
 ## How to use
 
+
+
 public class MyApplication extends Application {
 
     @Override
@@ -27,10 +29,11 @@ public class MyApplication extends Application {
 
 ### 注意: 自定义MyApplication在清单文件中的指定
 
+
 <application
         android:name=".MyApplication"
         
         
-### 喜好配置, 可以直接在 DLogUtils.initDLog() 中设置即可
+### 配置: 可以直接在 DLogUtils.initDLog() 中设置即可
 
 
